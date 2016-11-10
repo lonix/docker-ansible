@@ -1,7 +1,7 @@
 node('docker'){
 
   stage('Checkout') {
-    scm checkout
+    checkout scm
   }
 
 
