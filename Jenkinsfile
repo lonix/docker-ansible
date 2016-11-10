@@ -18,3 +18,4 @@ node('docker'){
     sh "docker rmi ${id}"
     step([$class: 'WsCleanup'])
   }
+}
