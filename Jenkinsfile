@@ -6,7 +6,7 @@ node('docker'){
 
 
   stage('Build') {
-    def SnapshotBuild = docker.build "lonix/ansible:${env.BUILD_TAG}"
+    SnapshotBuild = docker.build "lonix/ansible:${env.BUILD_TAG}"
   }
 
   stage('Test') {
