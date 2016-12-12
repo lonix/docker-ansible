@@ -6,12 +6,12 @@ node('docker'){
 
 
   stage('Build') {
-    def image = docker.build "lonix\ansible:${env.BUILD_TAG}"
+    def image = docker.build "lonix/ansible:${env.BUILD_TAG}"
   }
 
   stage('Test') {
     print "Do your testing here"
-    sh "docker images lonix\ansible:${env.BUILD_TAG}"
+    sh "docker images lonix/ansible:${env.BUILD_TAG}"
   }
 
   stage('Push') {
@@ -19,7 +19,7 @@ node('docker'){
   }
 
   stage('Cleanup') {
-    sh "docker rmi lonix\ansible:${env.BUILD_TAG}"
+    sh "docker rmi lonix/ansible:${env.BUILD_TAG}"
     step([$class: 'WsCleanup'])
   }
 }
