@@ -12,11 +12,15 @@ node('docker'){
   stage('Test') {
     print "Do your testing here"
     sh "docker images -a"
+    image.insde(){
+    sh "ansible --version"
+    }
   }
 
   stage('Push') {
   withDockerRegistry([credentialsId: '9885c61e-ae8f-4a7e-ae97-317653b179ba']) {
     image.push('latest')
+    image.push(${BUILD_NUMBER})
     }
   }
 
