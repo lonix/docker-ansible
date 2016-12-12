@@ -16,7 +16,7 @@ node('docker'){
 
   stage('Push') {
   withDockerRegistry([credentialsId: '9885c61e-ae8f-4a7e-ae97-317653b179ba']) {
-    image.push
+    image.push('latest')
     }
   }
 
