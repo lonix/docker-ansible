@@ -10,8 +10,6 @@ node('docker'){
   }
 
   stage('Test') {
-    print "Do your testing here"
-    sh "docker images -a"
     SnapshotBuild.inside {
       sh 'ansible --version'
     }
