@@ -6,21 +6,21 @@ node('docker'){
 
 
   stage('Build') {
-    def image = docker.build "lonix/ansible:${env.BUILD_TAG}"
+    def SnapshotBuild = docker.build "lonix/ansible:${env.BUILD_TAG}"
   }
 
   stage('Test') {
     print "Do your testing here"
     sh "docker images -a"
-    image.inside{
+    SnapshotBuild.inside{
     sh "ansible --version"
     }
   }
 
   stage('Push') {
   withDockerRegistry([credentialsId: '9885c61e-ae8f-4a7e-ae97-317653b179ba']) {
-    image.push('latest')
-    image.push(${env.BUILD_NUMBER})
+    SnapshotBuild.push('latest')
+    SnapshotBuild.push(${env.BUILD_NUMBER})
     }
   }
 
