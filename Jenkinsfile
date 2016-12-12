@@ -18,12 +18,7 @@ node('docker'){
   stage('Push') {
   withDockerRegistry([credentialsId: '9885c61e-ae8f-4a7e-ae97-317653b179ba']) {
     SnapshotBuild.push 'latest'
-    SnapshotBuild.push ${env.BUILD_NUMBER}
+    SnapshotBuild.push "${env.BUILD_NUMBER}"
     }
-  }
-
-  stage('Cleanup') {
-    sh "docker rmi lonix/ansible:${env.BUILD_TAG}"
-    step([$class: 'WsCleanup'])
   }
 }
