@@ -13,14 +13,14 @@ node('docker'){
     print "Do your testing here"
     sh "docker images -a"
     SnapshotBuild.inside {
-      sh "ansible --version"
+      sh 'ansible --version'
     }
   }
 
   stage('Push') {
   withDockerRegistry([credentialsId: '9885c61e-ae8f-4a7e-ae97-317653b179ba']) {
     SnapshotBuild.push 'latest'
-    SnapshotBuild.push (${env.BUILD_NUMBER})
+    SnapshotBuild.push ${env.BUILD_NUMBER}
     }
   }
 
