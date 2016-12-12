@@ -11,7 +11,7 @@ node('docker'){
 
   stage('Test') {
     print "Do your testing here"
-    sh "docker images ${c.id}"
+    sh "docker images -a"
   }
 
   stage('Push') {
