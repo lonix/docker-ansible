@@ -12,7 +12,7 @@ node('docker'){
   stage('Test') {
     print "Do your testing here"
     sh "docker images -a"
-    image.insde(){
+    image.insde{
     sh "ansible --version"
     }
   }
