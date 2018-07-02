@@ -1,8 +1,8 @@
 node('docker'){
 
-  stage('Checkout') {
-    checkout scm
-  }
+ # stage('Checkout') {
+ #   checkout scm
+ # }
 
 
   stage('Build') {
