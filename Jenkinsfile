@@ -1,10 +1,5 @@
 node('docker'){
 
- # stage('Checkout') {
- #   checkout scm
- # }
-
-
   stage('Build') {
     image = docker.build "lonix/ansible:${env.BUILD_TAG}"
   }
